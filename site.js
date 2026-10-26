@@ -444,7 +444,7 @@ var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   } else { start(); }
 })();
 
-/* ---- PBLフィールド一望（pbl.html）：地図・しぼり込み・一覧・くわしい内容 ---- */
+/* ---- 学びのフィールド（pbl.html）：地図・しぼり込み・一覧・くわしい内容 ---- */
 (function(){
   var app = document.getElementById('pblApp');
   if(!app) return;
