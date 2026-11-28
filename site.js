@@ -872,3 +872,18 @@ var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(fromHash){ var ex = document.getElementById('explore'); if(ex) setTimeout(function(){ ex.scrollIntoView({ block:'start' }); }, 50); }
   window.addEventListener('hashchange', function(){ if(readHash()) render(); });
 })();
+
+/* ---- 折りたたみ（details.fold）：#skills などのページ内リンクから来たら開く ---- */
+(function(){
+  function openFor(hash){
+    if(!hash || hash.length < 2) return;
+    var el = null; try{ el = document.getElementById(decodeURIComponent(hash.slice(1))); }catch(e){ return; }
+    if(el && el.tagName === 'DETAILS') el.open = true;
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    if(a) openFor(a.getAttribute('href'));
+  });
+  window.addEventListener('hashchange', function(){ openFor(location.hash); });
+  openFor(location.hash);
+})();
